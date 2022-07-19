@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <signal.h>
 #include <iostream>
 #include <fstream>
 #include <memory>
@@ -203,6 +204,7 @@ void ContinueInChild() {
 }
 
 int main(int argc, char* argv[]) {
+    signal(SIGHUP, SIG_IGN);
     ContinueInChild();
 
     Params params = ParseArgs(argc, argv);
