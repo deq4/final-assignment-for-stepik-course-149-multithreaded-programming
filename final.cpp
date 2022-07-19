@@ -53,6 +53,7 @@ class StupidToyHttpServer {
                     return;
                 }
 
+                relpath = relpath.substr(0, relpath.find("?"));
                 auto path = self->directory_path_ + relpath;
                 std::ifstream file(path);
                 if (!file) {
