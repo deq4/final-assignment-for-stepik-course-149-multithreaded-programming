@@ -62,7 +62,7 @@ class StupidToyHttpServer {
                 file.seekg(0, std::ios_base::end);
                 auto file_size = std::streamoff(file.tellg());
                 file.seekg(0);
-                if (file_size == std::numeric_limits<std::streamoff>::max()) {
+                if (!(file_size > 0 && file_size < (1ll << 40))) {
                     self->answer_with(404);
                     return;
                 }
